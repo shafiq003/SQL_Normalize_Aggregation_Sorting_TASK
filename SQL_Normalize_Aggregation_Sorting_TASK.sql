@@ -34,7 +34,7 @@ CREATE TABLE order_items (
     order_id INT,
     product_id INT,
     quantity INT,
-    line_price DECIMAL(10,2), -- snapshot: unit_price * quantity at order time
+    line_price DECIMAL(10,2),
     PRIMARY KEY (order_id, product_id),
     FOREIGN KEY (order_id) REFERENCES orders(order_id),
     FOREIGN KEY (product_id) REFERENCES products(product_id)
@@ -55,7 +55,7 @@ INSERT INTO order_items (order_id, product_id, quantity, line_price) VALUES
 (1, (SELECT product_id FROM products WHERE product_name='Keyboard'), 1, 800.00);
 
 INSERT INTO order_items (order_id, product_id, quantity, line_price) VALUES
-(2, (SELECT product_id FROM products WHERE product_name='Mobile Phone'), 2, 30000.00), /* 2 * 15000 */
+(2, (SELECT product_id FROM products WHERE product_name='Mobile Phone'), 2, 30000.00),
 (2, (SELECT product_id FROM products WHERE product_name='Headphones'), 1, 1200.00),
 (2, (SELECT product_id FROM products WHERE product_name='Keyboard'), 1, 800.00);
 
